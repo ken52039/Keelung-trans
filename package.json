@@ -1,0 +1,19 @@
+{
+  "name": "keelung-trans",
+  "version": "1.0.0",
+  "description": "基隆即時交通路網改版",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lincecumHao/Keelung-trans.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lincecumHao/Keelung-trans/issues"
+  },
+  "homepage": "https://github.com/lincecumHao/Keelung-trans#readme"
+}
