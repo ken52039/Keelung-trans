@@ -59,6 +59,7 @@
 
         .arrow-left-btn {
             width: 48px;
+            min-width: 48px;
             height: 36px;
             border: 2px solid #FFFFFF;
             border-radius: 0 100px 100px 0;
@@ -200,36 +201,41 @@
         /*        position: fixed;*/
         /*    }*/
         /*}*/
-        /*@media all and (min-width: 768px) {*/
-        /*    .map {*/
-        /*        width: 660px;*/
-        /*        height: calc(100vh - 84px - 2em);*/
-        /*        background-color: #0c5460;*/
-        /*        top: 3em;*/
-        /*        left: calc((100vw - 690px) / 2 + 15px);*/
-        /*        position: fixed;*/
-        /*    }*/
-        /*}*/
-        /*@media all and (min-width: 992px) {*/
-        /*    .map {*/
-        /*        width: 900px;*/
-        /*        height: calc(100vh - 84px - 2em);*/
-        /*        background-color: #0c5460;*/
-        /*        top: 3em;*/
-        /*        left: calc((100vw - 930px) / 2 + 15px);*/
-        /*        position: fixed;*/
-        /*    }*/
-        /*}*/
-        /*@media all and (min-width: 1200px) {*/
-        /*    .map {*/
-        /*        width: calc(100% - 30px);*/
-        /*        height: calc(100vh - 84px - 2em);*/
-        /*        background-color: #0c5460;*/
-        /*        top: 3em;*/
-        /*        left: 15px;*/
-        /*        position: fixed;*/
-        /*    }*/
-        /*}*/
+
+        @media all and (max-width: 991px) {
+            .alert-msg.map-tool-box.map-layer-right {
+                max-width: 344px;
+                min-width: 344px;
+                margin-top: .5rem !important;
+            }
+
+            #ext-links.show {
+                background-color: wheat;
+                position: absolute;
+                right: -15px;
+                top: 0;
+                width: 20em;
+                height: 100vh;
+            }
+
+            .alert-msg.map-tool-box {
+                max-width: 344px;
+                min-width: 344px;
+            }
+        }
+
+        @media all and (min-width: 992px) {
+            .alert-msg.map-tool-box {
+                min-width: 360px;
+                max-width: 360px;
+            }
+
+            .alert-msg.map-tool-box.map-layer-right {
+                max-width: unset;
+                min-width: unset;
+            }
+        }
+
         @media all and (min-width: 1440px) {
             .container.custom-max-width {
                 max-width: 1360px;
@@ -254,6 +260,7 @@
             padding-right: 0;
             padding-left: 0;
         }
+
     </style>
 </head>
 <body>
@@ -318,7 +325,7 @@
             <div class="col-12">
                 <div class="container-fluid feature-container">
                     <div class="row alert-msg-row align-items-end">
-                        <div class="col-4">
+                        <div class="col-xl-4 col-lg-5 col-md-6">
                             <div class="alert-msg map-tool-box">
                                 <span>icon</span>
                                 <span>資訊可變標誌設備若有故障，歡迎通報，俾利修復。</span>
@@ -326,7 +333,7 @@
                         </div>
                     </div>
                     <div class="row justify-content-between alert-info-row mt-2">
-                        <div class="col-4" style="display: flex;">
+                        <div class="col-xl-4 col-lg-5 col-md-12" style="display: flex;">
                             <div class="container alert-msg map-tool-box map-layer-left">
                                 <ul class="nav nav-tabs layer-tabs">
                                     <li class="nav-item">
@@ -342,8 +349,8 @@
                             </div>
                             <div class="arrow-left-btn"></div>
                         </div>
-                        <div class="col-2">
-                            <div class="alert-msg map-tool-box .map-layer-right">
+                        <div class="col-xl-2 col-lg-2 col-md-12">
+                            <div class="alert-msg map-tool-box map-layer-right">
                                 <span>資訊可變標誌設備若有故障，歡迎通報，俾利修復。</span>
                             </div>
                         </div>
