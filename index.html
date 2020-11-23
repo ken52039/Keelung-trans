@@ -190,50 +190,46 @@
 
         }
 
-        @media all and (max-width: 767px) {
-            .map {
-                width: 480px;
-                height: calc(100vh - 84px - 2em);
-                background-color: #0c5460;
-                top: 3em;
-                left: calc((100vw - 510px) / 2 + 15px);
-                position: fixed;
-            }
-        }
-
-        @media all and (min-width: 768px) {
-            .map {
-                width: 660px;
-                height: calc(100vh - 84px - 2em);
-                background-color: #0c5460;
-                top: 3em;
-                left: calc((100vw - 690px) / 2 + 15px);
-                position: fixed;
-            }
-        }
-
-        @media all and (min-width: 992px) {
-            .map {
-                width: 900px;
-                height: calc(100vh - 84px - 2em);
-                background-color: #0c5460;
-                top: 3em;
-                left: calc((100vw - 930px) / 2 + 15px);
-                position: fixed;
-            }
-        }
-
-        @media all and (min-width: 1200px) {
-            .map {
-                width: 1080px;
-                height: calc(100vh - 84px - 2em);
-                background-color: #0c5460;
-                top: 3em;
-                left: calc((100vw - 1110px) / 2 + 15px);
-                position: fixed;
-            }
-        }
-
+        /*@media all and (max-width: 767px) {*/
+        /*    .map {*/
+        /*        width: 480px;*/
+        /*        height: calc(100vh - 84px - 2em);*/
+        /*        background-color: #0c5460;*/
+        /*        top: 3em;*/
+        /*        left: calc((100vw - 510px) / 2 + 15px);*/
+        /*        position: fixed;*/
+        /*    }*/
+        /*}*/
+        /*@media all and (min-width: 768px) {*/
+        /*    .map {*/
+        /*        width: 660px;*/
+        /*        height: calc(100vh - 84px - 2em);*/
+        /*        background-color: #0c5460;*/
+        /*        top: 3em;*/
+        /*        left: calc((100vw - 690px) / 2 + 15px);*/
+        /*        position: fixed;*/
+        /*    }*/
+        /*}*/
+        /*@media all and (min-width: 992px) {*/
+        /*    .map {*/
+        /*        width: 900px;*/
+        /*        height: calc(100vh - 84px - 2em);*/
+        /*        background-color: #0c5460;*/
+        /*        top: 3em;*/
+        /*        left: calc((100vw - 930px) / 2 + 15px);*/
+        /*        position: fixed;*/
+        /*    }*/
+        /*}*/
+        /*@media all and (min-width: 1200px) {*/
+        /*    .map {*/
+        /*        width: calc(100% - 30px);*/
+        /*        height: calc(100vh - 84px - 2em);*/
+        /*        background-color: #0c5460;*/
+        /*        top: 3em;*/
+        /*        left: 15px;*/
+        /*        position: fixed;*/
+        /*    }*/
+        /*}*/
         @media all and (min-width: 1440px) {
             .container.custom-max-width {
                 max-width: 1360px;
@@ -243,23 +239,27 @@
                 margin-left: 1em;
                 margin-right: 1em;
             }
-
-            .map {
-                width: 1300px;
-                height: calc(100vh - 84px - 2em);
-                background-color: #0c5460;
-                top: 3em;
-                left: calc((100vw - 1330px) / 2 + 15px);
-                position: fixed;
-            }
         }
 
+        .map {
+            width: calc(100% - 30px);
+            height: calc(100vh - 84px - 2em);
+            background-color: #0c5460;
+            top: 3em;
+            left: 15px;
+            position: fixed;
+        }
+
+        div.container-fluid.feature-container {
+            padding-right: 0;
+            padding-left: 0;
+        }
     </style>
 </head>
 <body>
 <div class="container-fluid background">
     <img src="img/Header/bg.png" class="header-img" height="84" width="100%" alt="" style="z-index: 1">
-    <div class="container custom-max-width">
+    <div class="container custom-max-width" style="max-width: none;">
         <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand" href="#">
                 <img src="img/icon/icon_Keelunglogo@3x.svg" class="d-inline-block align-middle" width="34" height="34"
@@ -316,7 +316,7 @@
         </nav>
         <div class="row map-row">
             <div class="col-12">
-                <div class="container-fluid">
+                <div class="container-fluid feature-container">
                     <div class="row alert-msg-row align-items-end">
                         <div class="col-4">
                             <div class="alert-msg map-tool-box">
