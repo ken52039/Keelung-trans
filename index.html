@@ -62,6 +62,10 @@
             z-index: 10;
         }
 
+        .alert-info-row > div {
+            display: flex;
+        }
+
         .arrow-left-btn {
             width: 48px;
             min-width: 48px;
@@ -71,6 +75,21 @@
             position: relative;
             top: 3em;
             background: #16A09B url("img/Button/bt_arrow_left_normal.png") no-repeat center;
+            pointer-events: auto;
+        }
+
+        .arrow-right-btn {
+            transform: rotate(-180deg);
+            border: 2px solid #FFFFFF;
+            border-radius: 0 100px 100px 0;
+            width: 48px;
+            min-width: 48px;
+            height: 36px;
+            position: relative;
+            top: 3em;
+            left: 2px;
+            background: #16A09B url("img/Button/bt_arrow_left_normal.png") no-repeat center;
+            pointer-events: auto;
         }
 
         .row.alert-msg-row {
@@ -213,7 +232,12 @@
             .alert-msg.map-tool-box.map-layer-right {
                 max-width: 344px;
                 min-width: 344px;
+                height: 300px;
                 margin-top: .5rem !important;
+                background: #FFFFFF;
+                box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.20);
+                border-radius: 0 8px 8px 0;
+                pointer-events: auto;
             }
 
             #ext-links.show {
@@ -229,6 +253,16 @@
                 max-width: 344px;
                 min-width: 344px;
             }
+
+            .map-layer .arrow-right-btn {
+                display: none;
+            }
+
+
+
+            .map-layer {
+                justify-content: normal;
+            }
         }
 
         @media all and (min-width: 992px) {
@@ -239,7 +273,19 @@
 
             .alert-msg.map-tool-box.map-layer-right {
                 max-width: unset;
-                min-width: unset;
+                min-width: 200px;
+                height: 300px;
+                background: #FFFFFF;
+                box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.20);
+                border-radius: 8px 0 0 8px;
+            }
+
+            .map-layer {
+                justify-content: flex-end;
+            }
+
+            .map-layer .arrow-left-btn {
+                display: none;
             }
         }
 
@@ -273,6 +319,30 @@
             transition: none;
             display: none;
         }
+
+        .map-layer-right > div.container {
+            padding-top: 1rem;
+        }
+
+        .map-layer-right .layer-right-title {
+            font-size: 12px;
+            color: #000000;
+            letter-spacing: 0;
+            line-height: 24px;
+        }
+
+        .map-layer-right label {
+            font-size: 14px;
+            color: #000000;
+            letter-spacing: 0;
+            line-height: 24px;
+        }
+
+        .map-layer-right hr {
+            margin-top: .5rem;
+            margin-bottom: .5rem;
+        }
+
 
     </style>
 </head>
@@ -357,7 +427,7 @@
                         </div>
                     </div>
                     <div class="row justify-content-between alert-info-row mt-2">
-                        <div class="col-xl-4 col-lg-5 col-md-12" style="display: flex;">
+                        <div class="col-xl-4 col-lg-5 col-md-12">
                             <div class="container alert-msg map-tool-box map-layer-left">
                                 <ul class="nav nav-tabs layer-tabs">
                                     <li class="nav-item">
@@ -373,10 +443,102 @@
                             </div>
                             <div class="arrow-left-btn"></div>
                         </div>
-                        <div class="col-xl-2 col-lg-2 col-md-12">
+                        <div class="col-xl-2 col-lg-2 col-md-12 map-layer" style="">
+                            <div class="arrow-right-btn"></div>
                             <div class="alert-msg map-tool-box map-layer-right">
-                                <span>資訊可變標誌設備若有故障，歡迎通報，俾利修復。</span>
+                                <div class="container">
+                                    <div class="form-check">
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="layer-right-title">圖層選項</span>
+                                                <hr/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="cctv">
+                                                <label class="form-check-label" for="cctv">
+                                                    路況監視器
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="cms">
+                                                <label class="form-check-label" for="cms">
+                                                    資訊可變標誌
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="pak">
+                                                <label class="form-check-label" for="pak">
+                                                    停車資訊
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="vd">
+                                                <label class="form-check-label" for="vd">
+                                                    車輛偵測器
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="bus">
+                                                <label class="form-check-label" for="bus">
+                                                    公車到站時刻
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="weather">
+                                                <label class="form-check-label" for="weather">
+                                                    天氣
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="gauge">
+                                                <label class="form-check-label" for="gauge">
+                                                    河川水位計
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="flood">
+                                                <label class="form-check-label" for="flood">
+                                                    淹水感測器
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input class="form-check-input" type="checkbox" value=""
+                                                       id="constr">
+                                                <label class="form-check-label" for="constr">
+                                                    道路施工資訊
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            <div class="arrow-left-btn"></div>
                         </div>
                     </div>
                 </div>
