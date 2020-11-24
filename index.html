@@ -419,6 +419,11 @@
         map = new google.maps.Map(document.getElementById("map"), {
             center: { lat: 25.1319607736181, lng: 121.74126623694914 },
             zoom: 16,
+            mapTypeControlOptions: {
+                mapTypeIds: [],
+            },
+            streetViewControl: false,
+            zoomControl: false,
             styles: [
                 {
                     "featureType": "all",
