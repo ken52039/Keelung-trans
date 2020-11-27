@@ -57,6 +57,10 @@
             position: fixed !important;
         }
 
+        .row.alert-msg-row {
+            height: 5em;
+        }
+
         .map-row .alert-msg-row, .map-row .alert-info-row {
             position: relative;
             z-index: 10;
@@ -74,6 +78,7 @@
             border-radius: 0 100px 100px 0;
             position: relative;
             top: 3em;
+            right: 2px;
             background: #16A09B url("img/Button/bt_arrow_left_normal.png") no-repeat center;
             pointer-events: auto;
         }
@@ -92,10 +97,6 @@
             pointer-events: auto;
         }
 
-        .row.alert-msg-row {
-            height: 5em;
-        }
-
         .alert-msg {
             padding-left: .5em;
         }
@@ -103,7 +104,30 @@
         .map-layer-left {
             margin: inherit;
             width: 23em;
-            height: 31em;
+            max-height: 31em;
+        }
+
+        .map-layer-left #traffic-cond div.col-3 {
+            text-align: right;
+            padding: 0;
+        }
+
+        .map-layer-left #traffic-cond span {
+            color: #000000;
+            letter-spacing: 0;
+            line-height: 24px;
+        }
+
+        .map-layer-left #traffic-cond span.title {
+            font-size: 16px;
+        }
+
+        .map-layer-left #traffic-cond span.content {
+            font-size: 12px;
+        }
+
+        .map-layer-left #traffic-cond span.content.color {
+            color: #25A9A6;
         }
 
         .layer-tabs {
@@ -217,27 +241,24 @@
 
         }
 
-        /*@media all and (max-width: 767px) {*/
-        /*    .map {*/
-        /*        width: 480px;*/
-        /*        height: calc(100vh - 84px - 2em);*/
-        /*        background-color: #0c5460;*/
-        /*        top: 3em;*/
-        /*        left: calc((100vw - 510px) / 2 + 15px);*/
-        /*        position: fixed;*/
-        /*    }*/
-        /*}*/
+        @media all and (max-width: 767px) {
+            .alert-msg.map-tool-box {
+                max-width: 344px;
+                min-width: 344px;
+            }
+        }
 
         @media all and (max-width: 991px) {
             .alert-msg.map-tool-box.map-layer-right {
                 max-width: 344px;
                 min-width: 344px;
-                height: 300px;
                 margin-top: .5rem !important;
                 background: #FFFFFF;
                 box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.20);
                 border-radius: 0 8px 8px 0;
                 pointer-events: auto;
+                margin-left: 0;
+                margin-right: 0;
             }
 
             #ext-links.show {
@@ -258,11 +279,10 @@
                 display: none;
             }
 
-
-
             .map-layer {
                 justify-content: normal;
             }
+
         }
 
         @media all and (min-width: 992px) {
@@ -272,12 +292,18 @@
             }
 
             .alert-msg.map-tool-box.map-layer-right {
+                display: table;
+                padding-left: 1.6rem;
+                padding-bottom: 1rem;
                 max-width: unset;
                 min-width: 200px;
-                height: 300px;
                 background: #FFFFFF;
                 box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.20);
                 border-radius: 8px 0 0 8px;
+            }
+
+            .alert-msg.map-tool-box {
+                max-width: none;
             }
 
             .map-layer {
@@ -343,6 +369,26 @@
             margin-bottom: .5rem;
         }
 
+        .map-layer-right .custom-control-label {
+            padding-left: 8px;
+        }
+
+        .map-layer-right .custom-control-label::before {
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            top: 0;
+        }
+
+        .map-layer-right .custom-control-input:checked ~ .custom-control-label::before {
+            background-image: url("img/Button/bt_check_normal.png");
+            background-color: #16A09B;
+            background-position: center;
+        }
+
+        .map-layer-right .layer-opts .col-lg-12.col-md-6 {
+            padding-top: .75rem;
+        }
 
     </style>
 </head>
@@ -421,119 +467,434 @@
                     <div class="row alert-msg-row align-items-end">
                         <div class="col-xl-4 col-lg-5 col-md-6">
                             <div class="alert-msg map-tool-box">
-                                <span>icon</span>
+                                <img src="img/Button/bt_info_announcement.png"/>
                                 <span>資訊可變標誌設備若有故障，歡迎通報，俾利修復。</span>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-between alert-info-row mt-2">
                         <div class="col-xl-4 col-lg-5 col-md-12">
-                            <div class="container alert-msg map-tool-box map-layer-left">
+                            <div class="container alert-msg map-tool-box map-layer-left overflow-auto">
                                 <ul class="nav nav-tabs layer-tabs">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="#">交通路況速報</a>
+                                        <a class="nav-link active" href="#traffic-cond" data-toggle="tab">交通路況速報</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">旅行時間</a>
+                                        <a class="nav-link" href="#travel-time" data-toggle="tab">旅行時間</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">國道客運班次資訊</a>
+                                        <a class="nav-link" href="#bus-info" data-toggle="tab">國道客運班次資訊</a>
                                     </li>
                                 </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane container-fluid active" id="traffic-cond">
+                                        <div class="row d-none">
+                                            <div class="custom-control custom-switch">
+                                                <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                                <label class="custom-control-label" for="customSwitch1">w</label>
+                                            </div>
+                                        </div>
+                                        <hr class="d-none"/>
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="title">萬里</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">國三基金端經濱海公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">13</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">台二端斌端經北基金公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">4</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="title">萬里</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">國三基金端經濱海公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">13</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">台二端斌端經北基金公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">4</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="title">萬里</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">國三基金端經濱海公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">13</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">台二端斌端經北基金公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">4</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="title">萬里</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">國三基金端經濱海公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">13</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">台二端斌端經北基金公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">4</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="title">萬里</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">國三基金端經濱海公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">13</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">台二端斌端經北基金公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">4</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="title">萬里</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">國三基金端經濱海公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">13</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">台二端斌端經北基金公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">4</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="title">萬里</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">國三基金端經濱海公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">13</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">台二端斌端經北基金公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">4</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="title">萬里</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">國三基金端經濱海公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">13</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">台二端斌端經北基金公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">4</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="title">萬里</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">國三基金端經濱海公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">13</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">台二端斌端經北基金公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">4</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="title">萬里</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">國三基金端經濱海公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">13</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">台二端斌端經北基金公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">4</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                        <div class="row">
+                                            <div class="col">
+                                                <span class="title">萬里</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">國三基金端經濱海公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">13</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <div class="row justify-content-between">
+                                            <div class="col">
+                                                <img src="img/icon/ico_bulletpoint.png"/>
+                                                <span class="content">台二端斌端經北基金公路</span>
+                                            </div>
+                                            <div class="col-3">
+                                                <span class="content">約</span>
+                                                <span class="content color">4</span>
+                                                <span class="content">分鐘</span>
+                                            </div>
+                                        </div>
+                                        <hr/>
+                                    </div>
+                                    <div class="tab-pane container fade" id="travel-time">
+                                        time
+                                    </div>
+                                    <div class="tab-pane container fade" id="bus-info">
+                                        bus
+                                    </div>
+                                </div>
                             </div>
                             <div class="arrow-left-btn"></div>
                         </div>
                         <div class="col-xl-2 col-lg-2 col-md-12 map-layer" style="">
                             <div class="arrow-right-btn"></div>
-                            <div class="alert-msg map-tool-box map-layer-right">
-                                <div class="container">
-                                    <div class="form-check">
-                                        <div class="row">
-                                            <div class="col">
-                                                <span class="layer-right-title">圖層選項</span>
-                                                <hr/>
-                                            </div>
+                            <div class="container alert-msg map-tool-box map-layer-right">
+                                <div class="form-check">
+                                    <div class="row">
+                                        <div class="col" style="padding-left: 0">
+                                            <span class="layer-right-title">圖層選項</span>
+                                            <hr/>
                                         </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                       id="cctv">
-                                                <label class="form-check-label" for="cctv">
-                                                    路況監視器
-                                                </label>
-                                            </div>
+                                    </div>
+                                    <div class="row layer-opts">
+                                        <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                            <input class="custom-control-input" type="checkbox" value=""
+                                                   id="cctv">
+                                            <label class="custom-control-label" for="cctv">
+                                                路況監視器
+                                            </label>
                                         </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                       id="cms">
-                                                <label class="form-check-label" for="cms">
-                                                    資訊可變標誌
-                                                </label>
-                                            </div>
+                                        <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                            <input class="custom-control-input" type="checkbox" value=""
+                                                   id="cms">
+                                            <label class="custom-control-label" for="cms">
+                                                資訊可變標誌
+                                            </label>
                                         </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                       id="pak">
-                                                <label class="form-check-label" for="pak">
-                                                    停車資訊
-                                                </label>
-                                            </div>
+                                    </div>
+                                    <div class="row layer-opts">
+                                        <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                            <input class="custom-control-input" type="checkbox" value=""
+                                                   id="pak">
+                                            <label class="custom-control-label" for="pak">
+                                                停車資訊
+                                            </label>
                                         </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                       id="vd">
-                                                <label class="form-check-label" for="vd">
-                                                    車輛偵測器
-                                                </label>
-                                            </div>
+                                        <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                            <input class="custom-control-input" type="checkbox" value=""
+                                                   id="vd">
+                                            <label class="custom-control-label" for="vd">
+                                                車輛偵測器
+                                            </label>
                                         </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                       id="bus">
-                                                <label class="form-check-label" for="bus">
-                                                    公車到站時刻
-                                                </label>
-                                            </div>
+                                    </div>
+                                    <div class="row layer-opts">
+                                        <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                            <input class="custom-control-input" type="checkbox" value=""
+                                                   id="bus">
+                                            <label class="custom-control-label" for="bus">
+                                                公車到站時刻
+                                            </label>
                                         </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                       id="weather">
-                                                <label class="form-check-label" for="weather">
-                                                    天氣
-                                                </label>
-                                            </div>
+                                        <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                            <input class="custom-control-input" type="checkbox" value=""
+                                                   id="weather">
+                                            <label class="custom-control-label" for="weather">
+                                                天氣
+                                            </label>
                                         </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                       id="gauge">
-                                                <label class="form-check-label" for="gauge">
-                                                    河川水位計
-                                                </label>
-                                            </div>
+                                    </div>
+                                    <div class="row layer-opts">
+                                        <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                            <input class="custom-control-input" type="checkbox" value=""
+                                                   id="gauge">
+                                            <label class="custom-control-label" for="gauge">
+                                                河川水位計
+                                            </label>
                                         </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                       id="flood">
-                                                <label class="form-check-label" for="flood">
-                                                    淹水感測器
-                                                </label>
-                                            </div>
+                                        <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                            <input class="custom-control-input" type="checkbox" value=""
+                                                   id="flood">
+                                            <label class="custom-control-label" for="flood">
+                                                淹水感測器
+                                            </label>
                                         </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                       id="constr">
-                                                <label class="form-check-label" for="constr">
-                                                    道路施工資訊
-                                                </label>
-                                            </div>
+                                    </div>
+                                    <div class="row layer-opts">
+                                        <div class="col-lg-12 col-md-6 col-sm-6 col-6">
+                                            <input class="custom-control-input" type="checkbox" value=""
+                                                   id="constr">
+                                            <label class="custom-control-label" for="constr">
+                                                道路施工資訊
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
