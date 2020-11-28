@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>基隆市即時交通平台</title>
     <script
             crossorigin="anonymous"
@@ -14,8 +14,8 @@
             integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
             src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
     <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3qc6FrAWF3fLuY_QHMw8SxYFzr0gMnss&callback=initMap&libraries=&v=weekly"
             defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3qc6FrAWF3fLuY_QHMw8SxYFzr0gMnss&callback=initMap&libraries=&v=weekly"
     ></script>
     <style>
         @font-face {
@@ -432,7 +432,7 @@
         }
 
         .dropdown-container {
-            /*display: none;*/
+            display: none;
             padding-left: 2.25rem;
             padding-top: 1rem;
         }
@@ -461,21 +461,21 @@
 </head>
 <body>
 <div class="container-fluid background">
-    <img src="img/Header/bg.png" class="header-img" height="84" width="100%" alt="" style="z-index: 1">
+    <img alt="" class="header-img" height="84" src="img/Header/bg.png" style="z-index: 1" width="100%">
     <div class="container custom-max-width" style="max-width: none;">
         <nav class="navbar navbar-expand-lg navbar-light">
             <a class="navbar-brand" href="#">
-                <img src="img/icon/icon_Keelunglogo@3x.svg" class="d-inline-block align-middle" width="34" height="34"
-                     alt="" loading="lazy">
+                <img alt="" class="d-inline-block align-middle" height="34" loading="lazy"
+                     src="img/icon/icon_Keelunglogo@3x.svg" width="34">
                 <span class="title">基隆市即時交通平台</span>
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#ext-links-sidebar"
-                    aria-controls="ext-links" aria-expanded="false" aria-label="Toggle navigation">
+            <button aria-controls="ext-links" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+                    data-target="#ext-links-sidebar" data-toggle="modal" type="button">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="ext-links">
                 <ul class="navbar-nav ml-auto">
-                    <img src="img/Header/bg.png" class="header-img" height="84" width="100%" alt="">
+                    <img alt="" class="header-img" height="84" src="img/Header/bg.png" width="100%">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">首頁</a>
                     </li>
@@ -544,20 +544,20 @@
                             <div class="container alert-msg map-tool-box map-layer-left overflow-auto">
                                 <ul class="nav nav-tabs layer-tabs">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="#traffic-cond" data-toggle="tab">交通路況速報</a>
+                                        <a class="nav-link active" data-toggle="tab" href="#traffic-cond">交通路況速報</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#travel-time" data-toggle="tab">旅行時間</a>
+                                        <a class="nav-link" data-toggle="tab" href="#travel-time">旅行時間</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#bus-info" data-toggle="tab">國道客運班次資訊</a>
+                                        <a class="nav-link" data-toggle="tab" href="#bus-info">國道客運班次資訊</a>
                                     </li>
                                 </ul>
                                 <div class="tab-content">
                                     <div class="tab-pane container-fluid active" id="traffic-cond">
                                         <div class="row d-none">
                                             <div class="custom-control custom-switch">
-                                                <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                                <input class="custom-control-input" id="customSwitch1" type="checkbox">
                                                 <label class="custom-control-label" for="customSwitch1">w</label>
                                             </div>
                                         </div>
@@ -893,15 +893,15 @@
                                     </div>
                                     <div class="row layer-opts">
                                         <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                            <input class="custom-control-input" type="checkbox" value=""
-                                                   id="cctv">
+                                            <input class="custom-control-input" id="cctv" type="checkbox"
+                                                   value="">
                                             <label class="custom-control-label" for="cctv">
                                                 路況監視器
                                             </label>
                                         </div>
                                         <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                            <input class="custom-control-input" type="checkbox" value=""
-                                                   id="cms">
+                                            <input class="custom-control-input" id="cms" type="checkbox"
+                                                   value="">
                                             <label class="custom-control-label" for="cms">
                                                 資訊可變標誌
                                             </label>
@@ -909,15 +909,15 @@
                                     </div>
                                     <div class="row layer-opts">
                                         <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                            <input class="custom-control-input" type="checkbox" value=""
-                                                   id="pak">
+                                            <input class="custom-control-input" id="pak" type="checkbox"
+                                                   value="">
                                             <label class="custom-control-label" for="pak">
                                                 停車資訊
                                             </label>
                                         </div>
                                         <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                            <input class="custom-control-input" type="checkbox" value=""
-                                                   id="vd">
+                                            <input class="custom-control-input" id="vd" type="checkbox"
+                                                   value="">
                                             <label class="custom-control-label" for="vd">
                                                 車輛偵測器
                                             </label>
@@ -925,15 +925,15 @@
                                     </div>
                                     <div class="row layer-opts">
                                         <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                            <input class="custom-control-input" type="checkbox" value=""
-                                                   id="bus">
+                                            <input class="custom-control-input" id="bus" type="checkbox"
+                                                   value="">
                                             <label class="custom-control-label" for="bus">
                                                 公車到站時刻
                                             </label>
                                         </div>
                                         <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                            <input class="custom-control-input" type="checkbox" value=""
-                                                   id="weather">
+                                            <input class="custom-control-input" id="weather" type="checkbox"
+                                                   value="">
                                             <label class="custom-control-label" for="weather">
                                                 天氣
                                             </label>
@@ -941,15 +941,15 @@
                                     </div>
                                     <div class="row layer-opts">
                                         <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                            <input class="custom-control-input" type="checkbox" value=""
-                                                   id="gauge">
+                                            <input class="custom-control-input" id="gauge" type="checkbox"
+                                                   value="">
                                             <label class="custom-control-label" for="gauge">
                                                 河川水位計
                                             </label>
                                         </div>
                                         <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                            <input class="custom-control-input" type="checkbox" value=""
-                                                   id="flood">
+                                            <input class="custom-control-input" id="flood" type="checkbox"
+                                                   value="">
                                             <label class="custom-control-label" for="flood">
                                                 淹水感測器
                                             </label>
@@ -957,8 +957,8 @@
                                     </div>
                                     <div class="row layer-opts">
                                         <div class="col-lg-12 col-md-6 col-sm-6 col-6">
-                                            <input class="custom-control-input" type="checkbox" value=""
-                                                   id="constr">
+                                            <input class="custom-control-input" id="constr" type="checkbox"
+                                                   value="">
                                             <label class="custom-control-label" for="constr">
                                                 道路施工資訊
                                             </label>
@@ -972,11 +972,11 @@
                 </div>
             </div>
         </div>
-        <div style="background-color: white; " class="map" id="map">true map</div>
+        <div class="map" id="map" style="background-color: white; ">true map</div>
     </div>
     <div class="row footer">
         <div class="d-none d-md-block col-3 footer-left">
-            <img src="img/Footer/Footer_left@3x.svg" height="154" alt="">
+            <img alt="" height="154" src="img/Footer/Footer_left@3x.svg">
         </div>
         <div class="col-md-6 footer-info">
             <div class="container-fluid">
@@ -997,7 +997,7 @@
             </div>
         </div>
         <div class="d-none d-md-flex col-3 footer-right float-right">
-            <img src="img/Footer/Footer_Right@3x.svg" height="154" alt="">
+            <img alt="" height="154" src="img/Footer/Footer_Right@3x.svg">
         </div>
     </div>
 </div>
@@ -1006,6 +1006,17 @@
 
     function initMap() {
         $().ready()
+        $('.dropdown-btn').on('click', function (e) {
+            let nextElm = e.target.nextElementSibling;
+            $('.dropdown-container').hide();
+            if (this.className.indexOf('active') > -1) {
+                // same button click twice.
+                $(e.target).removeClass('active');
+            } else {
+                nextElm.style.display = 'block';
+                this.classList.toggle('active');
+            }
+        });
         map = new google.maps.Map(document.getElementById("map"), {
             center: { lat: 25.1319607736181, lng: 121.74126623694914 },
             zoom: 16,
@@ -1123,12 +1134,12 @@
     }
 
 </script>
-<div class="modal left fade menu" id="ext-links-sidebar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
+<div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal left fade menu" id="ext-links-sidebar" role="dialog"
+     tabindex="-1">
     <div class="modal-dialog position-fixed m-auto" role="document">
         <div class="modal-content h-100" style="overflow-y: scroll;">
             <div class="modal-body p-3">
-                <div class="float-right nav-close-btn" data-dismiss="modal" aria-label="Close"></div>
+                <div aria-label="Close" class="float-right nav-close-btn" data-dismiss="modal"></div>
                 <div class="sidenav">
                     <a href="#">首頁</a>
                     <button class="dropdown-btn">大眾運輸資訊<i class="fa fa-caret-down"></i>
