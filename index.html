@@ -262,12 +262,22 @@
             }
 
             #ext-links.show {
-                background-color: wheat;
+                background-color: #FFFFFF;
                 position: absolute;
                 right: -15px;
                 top: 0;
-                width: 20em;
                 height: 100vh;
+                width: 16rem;
+                max-width: 16em;
+            }
+
+            #ext-links.show ul {
+                padding-top: 5rem;
+                padding-left: 2rem;
+            }
+
+            #ext-links.show ul li a {
+                width: fit-content;
             }
 
             .alert-msg.map-tool-box {
@@ -390,6 +400,63 @@
             padding-top: .75rem;
         }
 
+        #ext-links-sidebar .modal-dialog {
+            right: 0;
+            height: 100vh;
+            width: 16rem;
+            max-width: 16em;
+        }
+
+        /* Fixed sidenav, full height */
+        .sidenav {
+            position: relative;
+            top: 1rem;
+            width: 100%;
+        }
+
+        /* Style the sidenav links and the dropdown button */
+        .sidenav > a, .dropdown-btn {
+            padding: 6px 8px 6px 16px;
+            text-decoration: none;
+            font-size: 20px;
+            display: block;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            outline: none;
+            color: #174B60;
+            letter-spacing: 0;
+            line-height: 24px;
+        }
+
+        .dropdown-container {
+            /*display: none;*/
+            padding-left: 2.25rem;
+            padding-top: 1rem;
+        }
+
+        .dropdown-container a {
+            opacity: 0.6;
+            font-size: 18px;
+            color: #000000;
+            letter-spacing: 0;
+            line-height: 24px;
+            display: block;
+            padding-bottom: .75rem;
+        }
+
+        div.nav-close-btn {
+            background-color: #6abbc2;
+            background-image: url("img/Button/bt_header_close_normal.png");
+            background-position: center;
+            margin-top: .5rem;
+            margin-right: .5rem;
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
     </style>
 </head>
 <body>
@@ -402,7 +469,7 @@
                      alt="" loading="lazy">
                 <span class="title">基隆市即時交通平台</span>
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ext-links"
+            <button class="navbar-toggler" type="button" data-toggle="modal" data-target="#ext-links-sidebar"
                     aria-controls="ext-links" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -1056,5 +1123,63 @@
     }
 
 </script>
+<div class="modal left fade menu" id="ext-links-sidebar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog position-fixed m-auto" role="document">
+        <div class="modal-content h-100" style="overflow-y: scroll;">
+            <div class="modal-body p-3">
+                <div class="float-right nav-close-btn" data-dismiss="modal" aria-label="Close"></div>
+                <div class="sidenav">
+                    <a href="#">首頁</a>
+                    <button class="dropdown-btn">大眾運輸資訊<i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-container">
+                        <a href="https://www.taiwanbus.tw/" target="_blank">公路客運乘車系統</a>
+                        <a href="http://www.kingbus.com.tw/index.php"
+                           target="_blank">國光客運</a>
+                        <a href="http://www.kl-bus.com.tw/" target="_blank">基隆客運</a>
+                        <a href="https://www.railway.gov.tw/tra-tip-web/tip/tip001/tip112/gobytime"
+                           target="_blank">台灣鐵路</a>
+                        <a href="https://www.thsrc.com.tw/ArticleContent/a3b630bb-1066-4352-a1ef-58c7b4e8ef7c"
+                           target="_blank">台灣高鐵</a>
+                        <a href="http://ebus.klcba.gov.tw/klebus/"
+                           target="_blank">基隆市公車便民服務網</a>
+                    </div>
+                    <a href="https://park.klcg.gov.tw/" target="_blank">路邊停車資訊</a>
+
+                    <button class="dropdown-btn">旅遊資訊<i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-container">
+                        <a href="http://tour.klcg.gov.tw/zh-hant/"
+                           target="_blank">基隆觀光旅遊資訊網</a>
+                        <a href="https://www.necoast-nsa.gov.tw/"
+                           target="_blank">東北角暨宜蘭海岸<br/>國家風景區觀光資訊網</a>
+                        <a href="https://www.northguan-nsa.gov.tw/user/main.aspx?Lang=1"
+                           target="_blank">交通部觀光局北海岸及<br/>觀音山國家風景處觀光<br/>資訊網</a>
+                        <a href="https://www.taiwantrip.com.tw/line/103?x=1&y=2"
+                           target="_blank">台灣好行-濱海奇基線</a>
+                        <a href="https://www.nmmst.gov.tw/chhtml/"
+                           target="_blank">國立海洋科技博物館</a>
+                    </div>
+
+                    <button class="dropdown-btn">相關連結<i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-container">
+                        <a href="https://www.klcg.gov.tw/" target="_blank">基隆市政府</a>
+                        <a href="https://tourism.klcg.gov.tw/"
+                           target="_blank">基隆市政府交通處</a>
+                        <a href="https://140.121.146.157/wordpress/"
+                           target="_blank">基隆深耕計畫網站</a>
+                        <a href="https://www.klcg.gov.tw/tw/Default/kl_1999"
+                           target="_blank">維修通報</a>
+                        <a href="https://www.cwb.gov.tw/V8/C/" target="_blank">氣象資訊</a>
+                        <a href="https://kct.klcg.gov.tw/dig/Civilian/Default.aspx"
+                           target="_blank">基隆市道路挖掘管理<br/>資訊平台</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
