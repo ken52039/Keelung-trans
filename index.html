@@ -242,13 +242,41 @@
         }
 
         @media all and (max-width: 767px) {
+            .alert-info-row > div.map-layer {
+                display: none;
+            }
+
+            .arrow-left-btn {
+                display: none !important;
+            }
+
             .alert-msg.map-tool-box {
                 max-width: 344px;
                 min-width: 344px;
             }
+
+            .alert-msg.map-tool-box.map-layer-left {
+                background: #FFFFFF;
+                box-shadow: 0 0 8px 0 rgba(0,0,0,0.20);
+                border-radius: 12px;
+                width: 96%;
+                position: fixed;
+                bottom: 0;
+                max-width: none;
+                min-width: unset;
+            }
         }
 
         @media all and (max-width: 991px) {
+            #map.map {
+                width: 100vw;
+                height: 100vh;
+                top: 0;
+                left: 0;
+            }
+            .background > .container {
+                padding: 0;
+            }
             .alert-msg.map-tool-box.map-layer-right {
                 max-width: 344px;
                 min-width: 344px;
@@ -879,9 +907,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="arrow-left-btn"></div>
+                            <div class="arrow-left-btn d-none d-sm-block"></div>
                         </div>
-                        <div class="col-xl-2 col-lg-2 col-md-12 map-layer" style="">
+                        <div class="col-xl-2 col-lg-2 col-md-12 map-layer">
                             <div class="arrow-right-btn"></div>
                             <div class="container alert-msg map-tool-box map-layer-right">
                                 <div class="form-check">
